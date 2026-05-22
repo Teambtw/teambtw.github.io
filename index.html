@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Team btw!</title>
 
-  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
-  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap)"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -152,11 +152,6 @@
       text-decoration: none;
     }
 
-    /*
-      NAV LOGO IMAGE
-      Place btw-logo.png in the same folder as index.html.
-      If it's missing the text fallback shows automatically.
-    */
     .nav-logo-img {
       height: 36px;
       width: auto;
@@ -201,13 +196,11 @@
       text-align: center;
       padding: 0 2rem;
       position: relative;
-      /* Very faint gold center glow — low opacity keeps it gold not orange */
       background:
         radial-gradient(ellipse 55% 40% at 50% 52%, rgba(245, 197, 24, 0.04) 0%, transparent 70%),
         var(--bg);
     }
 
-    /* Corner bracket decorations */
     #hero::before, #hero::after {
       content: '';
       position: absolute;
@@ -220,11 +213,6 @@
     #hero::before { top: 10%; left: 5%; border-width: 2px 0 0 2px; }
     #hero::after  { bottom: 10%; right: 5%; border-width: 0 2px 2px 0; }
 
-    /*
-      HERO LOGO IMAGE
-      Save btw-logo.png in the same folder.
-      Hides itself if the file isn't there yet.
-    */
     .hero-logo-img {
       width: clamp(160px, 36vw, 420px);
       height: auto;
@@ -251,7 +239,6 @@
       margin-bottom: 0.6rem;
     }
 
-    /* The "btw!" word rendered in solid gold — no glow bleeding */
     .hero-title .gold { color: var(--gold); }
 
     .hero-subtitle {
@@ -266,7 +253,6 @@
 
     /* ============================================
        ROSTER
-       Duplicate .player-card to add new members.
     ============================================ */
     #roster { background: var(--bg-alt); }
 
@@ -278,10 +264,6 @@
       margin: 0 auto;
     }
 
-    /* ── PLAYER CARD ─────────────────────────────
-       Copy this whole block for each new player.
-       Update: avatar, name, role, TikTok href, Discord href.
-    ──────────────────────────────────────────────*/
     .player-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -297,7 +279,6 @@
       transition: border-color 0.3s, transform 0.3s;
     }
 
-    /* Gold top bar on hover */
     .player-card::before {
       content: '';
       position: absolute;
@@ -315,13 +296,6 @@
 
     .player-card:hover::before { opacity: 1; }
 
-    /*
-      AVATAR
-      To use the dog photo for JDogg:
-        1. Save image as jdogg-logo.jpg next to index.html
-        2. Replace the <div class="player-avatar">J</div>
-           with: <img src="jdogg-logo.jpg" alt="JDogg" class="player-avatar player-avatar--img" />
-    */
     .player-avatar {
       width: 88px;
       height: 88px;
@@ -381,12 +355,9 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-    /* ── END PLAYER CARD ──────────────────────── */
 
     /* ============================================
-       FEED — Recent Drops
-       Replace .tiktok-placeholder-inner with a real
-       TikTok <blockquote class="tiktok-embed"> + script.
+       FEED
     ============================================ */
     #feed { background: var(--bg); }
 
@@ -446,9 +417,6 @@
       text-align: center;
     }
 
-    /*
-      FOOTER LOGO IMAGE — same btw-logo.png file.
-    */
     .footer-logo-img {
       height: 42px;
       width: auto;
@@ -524,18 +492,12 @@
     ============================================ */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-
       section { padding: 4rem 1.25rem; }
-
-      #hero::before, #hero::after {
-        width: 48px; height: 48px;
-      }
-
+      #hero::before, #hero::after { width: 48px; height: 48px; }
       .roster-grid {
         grid-template-columns: 1fr;
         max-width: 290px;
       }
-
       .tiktok-card {
         width: 100%;
         max-width: 320px;
@@ -553,17 +515,10 @@
 </head>
 <body>
 
-  <!-- =============================================
-       NAV
-  ============================================== -->
   <nav>
     <a href="#hero" class="nav-logo">
-      <!--
-        BTW LOGO: save btw-logo.png next to index.html.
-        Text fallback shows if file is missing.
-      -->
       <img
-        src="btw-logo.png"
+        src="btwlogo.jpg"
         alt="Team btw!"
         class="nav-logo-img"
         onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
@@ -575,25 +530,16 @@
       <li><a href="#roster">Roster</a></li>
       <li><a href="#feed">Feed</a></li>
       <li>
-        <a href="[discord.gg](https://discord.gg/GZcAkqgQvA)" target="_blank" rel="noopener noreferrer">
+        <a href="https://discord.gg/GZcAkqgQvA" target="_blank" rel="noopener noreferrer">
           Discord
         </a>
       </li>
     </ul>
   </nav>
 
-
-  <!-- =============================================
-       HERO
-  ============================================== -->
   <section id="hero">
-
-    <!--
-      BTW LOGO in hero — save btw-logo.png next to index.html.
-      Hides if file not found.
-    -->
     <img
-      src="btw-logo.png"
+      src="btwlogo.jpg"
       alt="Team btw! Esports"
       class="hero-logo-img"
       onerror="this.style.display='none';"
@@ -608,39 +554,22 @@
     <p class="hero-subtitle">Zero Build. High Tier.</p>
 
     <a
-      href="[discord.gg](https://discord.gg/GZcAkqgQvA)"
+      href="https://discord.gg/GZcAkqgQvA"
       target="_blank"
       rel="noopener noreferrer"
       class="btn-primary"
     >
       Join the Discord
     </a>
-
   </section>
 
-
-  <!-- =============================================
-       ROSTER
-       ADD A NEW MEMBER: copy the player-card block,
-       update avatar letter (or swap to img), name,
-       role, and both button href values.
-  ============================================== -->
   <section id="roster">
     <h2 class="section-title">Active Roster</h2>
 
     <div class="roster-grid">
 
-      <!-- ── PLAYER CARD: JDogg ──────────────────
-           DOG PHOTO INSTRUCTIONS:
-           1. Save dog photo as jdogg-logo.jpg in same folder.
-           2. Delete: <div class="player-avatar">J</div>
-           3. Paste:  <img src="jdogg-logo.jpg" alt="JDogg"
-                           class="player-avatar player-avatar--img" />
-      ─────────────────────────────────────────── -->
       <div class="player-card">
-
-        <div class="player-avatar">J</div>
-        <!-- SWAP ABOVE FOR DOG PHOTO — see instructions in comment above -->
+        <img src="IMG_0857.jpg" alt="JDogg" class="player-avatar player-avatar--img" />
 
         <h3 class="player-name">JDogg</h3>
         <p class="player-role">Founder</p>
@@ -649,42 +578,29 @@
 
         <div class="card-buttons">
           <a
-            href="[tiktok.com](https://www.tiktok.com/@tiktokjdogg)"
+            href="https://www.tiktok.com/@tiktokjdogg"
             target="_blank"
             rel="noopener noreferrer"
             class="btn-secondary"
           >TikTok</a>
           <a
-            href="[discord.gg](https://discord.gg/3fBhDtWkCx)"
+            href="https://discord.gg/3fBhDtWkCx"
             target="_blank"
             rel="noopener noreferrer"
             class="btn-secondary"
           >Discord</a>
         </div>
-
       </div>
-      <!-- ── END PLAYER CARD ─────────────────── -->
 
     </div>
   </section>
 
-
-  <!-- =============================================
-       FEED — Recent Drops
-       ADDING A REAL TIKTOK EMBED:
-       1. Go to TikTok, open the video, click Share > Embed.
-       2. Copy the <blockquote> + <script> snippet.
-       3. Delete the .tiktok-placeholder-inner div.
-       4. Paste the TikTok snippet inside .tiktok-card.
-  ============================================== -->
   <section id="feed">
     <h2 class="section-title">Recent Drops</h2>
-
     <div class="feed-grid">
-
       <div class="tiktok-card">
         <div class="tiktok-placeholder-inner">
-          <svg viewBox="0 0 24 24" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89
               0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1
               2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05
@@ -698,7 +614,7 @@
 
       <div class="tiktok-card">
         <div class="tiktok-placeholder-inner">
-          <svg viewBox="0 0 24 24" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89
               0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1
               2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05
@@ -712,7 +628,7 @@
 
       <div class="tiktok-card">
         <div class="tiktok-placeholder-inner">
-          <svg viewBox="0 0 24 24" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89
               0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1
               2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05
@@ -723,18 +639,12 @@
           <span>Drop coming soon</span>
         </div>
       </div>
-
     </div>
   </section>
 
-
-  <!-- =============================================
-       FOOTER
-  ============================================== -->
   <footer>
-
     <img
-      src="btw-logo.png"
+      src="btwlogo.jpg"
       alt="Team btw!"
       class="footer-logo-img"
       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
@@ -744,18 +654,8 @@
     <div class="footer-links">
       <a href="mailto:contact@teambtw.gg">contact@teambtw.gg</a>
       <span class="footer-sep">·</span>
-      <a href="[discord.gg](https://discord.gg/GZcAkqgQvA)" target="_blank" rel="noopener noreferrer">
+      <a href="https://discord.gg/GZcAkqgQvA" target="_blank" rel="noopener noreferrer">
         Team Discord
       </a>
       <span class="footer-sep">·</span>
-      <a href="[tiktok.com](https://www.tiktok.com/@tiktokjdogg)" target="_blank" rel="noopener noreferrer">
-        TikTok
-      </a>
-    </div>
-
-    <p class="footer-copy">Team btw! &copy; 2026</p>
-
-  </footer>
-
-</body>
-</html>
+      <a href="https://www.tiktok.com/@tiktokjdogg"
