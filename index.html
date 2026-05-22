@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch:wght@400;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -24,21 +24,18 @@
     }
 
     /* ============================================
-       DESIGN TOKENS
-       Gold is now a cool, bright yellow-white gold.
-       Glow intensity is kept very low so it reads
-       as gold, not orange, on dark backgrounds.
+       DESIGN TOKENS - Cyberpunk Neon Palette
     ============================================ */
     :root {
-      --bg:         #060608;
-      --bg-card:    #0c0c10;
-      --bg-alt:     #09090d;
-      --gold:       #F5C518;   /* IMDb-style cool gold — reads clearly as gold not orange */
-      --gold-hover: #ffe066;   /* lighter on hover */
-      --blue:       #00AAFF;
-      --white:      #FFFFFF;
-      --grey:       #A0A0A8;
-      --border:     #16161e;
+      --bg:         #050505;
+      --bg-card:    #0a0a0f;
+      --bg-alt:     #08080a;
+      --blue:       #00d4ff;   /* Electric Blue */
+      --blue-hover: #5ce1e6;   
+      --pink:       #ff007f;   /* Neon Pink */
+      --white:      #ffffff;
+      --grey:       #8a8a99;
+      --border:     #1a1a24;
     }
 
     html { scroll-behavior: smooth; }
@@ -46,7 +43,7 @@
     body {
       background: var(--bg);
       color: var(--white);
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
@@ -58,12 +55,12 @@
        SECTION TITLES
     ============================================ */
     .section-title {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
+      font-family: 'Audiowide', cursive;
+      font-weight: 400;
       font-size: clamp(1.5rem, 4vw, 2.4rem);
       color: var(--white);
       text-align: center;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 3rem;
     }
@@ -72,46 +69,49 @@
       content: '';
       display: block;
       width: 54px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--gold));
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--pink));
       margin: 0.7rem auto 0;
       border-radius: 2px;
+      box-shadow: 0 0 10px var(--pink);
     }
 
     /* ============================================
        BUTTONS
     ============================================ */
 
-    /* Primary gold outline button */
+    /* Primary blue outline button */
     .btn-primary {
       display: inline-block;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
+      font-family: 'Audiowide', cursive;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--gold);
-      padding: 0.9rem 2.6rem;
-      border: 2px solid var(--gold);
-      border-radius: 3px;
+      color: var(--blue);
+      padding: 1rem 2.6rem;
+      border: 2px solid var(--blue);
+      border-radius: 4px;
       background: transparent;
       cursor: pointer;
-      transition: background 0.22s, color 0.22s, border-color 0.22s;
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+      transition: all 0.3s ease;
     }
 
     .btn-primary:hover {
-      background: var(--gold);
+      background: var(--blue);
       color: #000;
-      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+      transform: scale(1.05);
     }
 
     /* Secondary card button */
     .btn-secondary {
       display: inline-block;
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       text-decoration: none;
@@ -121,12 +121,13 @@
       border-radius: 3px;
       background: transparent;
       cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
+      transition: all 0.2s ease;
     }
 
     .btn-secondary:hover {
-      color: var(--gold);
-      border-color: var(--gold);
+      color: var(--pink);
+      border-color: var(--pink);
+      box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
     }
 
     /* ============================================
@@ -141,7 +142,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.85rem 2.5rem;
-      background: rgba(6, 6, 8, 0.94);
+      background: rgba(5, 5, 5, 0.85);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
@@ -158,11 +159,11 @@
     }
 
     .nav-logo-text {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
+      font-family: 'Audiowide', cursive;
       font-size: 1.1rem;
-      color: var(--gold);
+      color: var(--blue);
       letter-spacing: 0.1em;
+      text-shadow: 0 0 8px var(--blue);
     }
 
     .nav-links {
@@ -172,9 +173,9 @@
     }
 
     .nav-links a {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--grey);
@@ -182,10 +183,10 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--blue); }
 
     /* ============================================
-       HERO
+       HERO (With Background Image Support)
     ============================================ */
     #hero {
       min-height: 100vh;
@@ -196,9 +197,10 @@
       text-align: center;
       padding: 0 2rem;
       position: relative;
+      /* The Background Image overlay */
       background:
-        radial-gradient(ellipse 55% 40% at 50% 52%, rgba(245, 197, 24, 0.04) 0%, transparent 70%),
-        var(--bg);
+        linear-gradient(to bottom, rgba(5, 5, 5, 0.6), rgba(5, 5, 5, 1)),
+        url('bg-graffiti.jpg') center/cover no-repeat;
     }
 
     #hero::before, #hero::after {
@@ -207,8 +209,9 @@
       width: 80px;
       height: 80px;
       border-style: solid;
-      border-color: var(--gold);
-      opacity: 0.15;
+      border-color: var(--blue);
+      opacity: 0.3;
+      box-shadow: 0 0 15px var(--blue) inset;
     }
     #hero::before { top: 10%; left: 5%; border-width: 2px 0 0 2px; }
     #hero::after  { bottom: 10%; right: 5%; border-width: 0 2px 2px 0; }
@@ -217,21 +220,22 @@
       width: clamp(160px, 36vw, 420px);
       height: auto;
       margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
     }
 
     .hero-eyebrow {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 600;
-      font-size: 0.75rem;
+      font-family: 'Chakra Petch', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
       letter-spacing: 0.45em;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--pink);
       margin-bottom: 0.9rem;
+      text-shadow: 0 0 5px var(--pink);
     }
 
     .hero-title {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
+      font-family: 'Audiowide', cursive;
       font-size: clamp(2.6rem, 9vw, 6.5rem);
       line-height: 1;
       color: var(--white);
@@ -239,11 +243,12 @@
       margin-bottom: 0.6rem;
     }
 
-    .hero-title .gold { color: var(--gold); }
+    /* Accent word coloring */
+    .hero-title .accent { color: var(--blue); text-shadow: 0 0 15px var(--blue); }
 
     .hero-subtitle {
-      font-family: 'Rajdhani', sans-serif;
-      font-weight: 500;
+      font-family: 'Chakra Petch', sans-serif;
+      font-weight: 600;
       font-size: clamp(0.9rem, 2.2vw, 1.3rem);
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -276,7 +281,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
+      transition: all 0.3s ease;
     }
 
     .player-card::before {
@@ -284,14 +289,15 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      background: linear-gradient(90deg, transparent, var(--pink), transparent);
       opacity: 0;
       transition: opacity 0.3s;
     }
 
     .player-card:hover {
-      border-color: var(--gold);
+      border-color: var(--pink);
       transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
     .player-card:hover::before { opacity: 1; }
@@ -305,10 +311,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
+      font-family: 'Audiowide', cursive;
       font-size: 1.5rem;
-      color: var(--gold);
+      color: var(--blue);
       margin-bottom: 0.5rem;
       overflow: hidden;
       transition: border-color 0.3s;
@@ -320,12 +325,12 @@
     }
 
     .player-card:hover .player-avatar {
-      border-color: var(--gold);
+      border-color: var(--pink);
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
     }
 
     .player-name {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
+      font-family: 'Audiowide', cursive;
       font-size: 1.2rem;
       color: var(--white);
       letter-spacing: 0.08em;
@@ -333,12 +338,12 @@
     }
 
     .player-role {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 700;
-      font-size: 0.74rem;
+      font-size: 0.8rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--blue);
       margin-bottom: 0.5rem;
     }
 
@@ -381,7 +386,10 @@
       transition: border-color 0.3s;
     }
 
-    .tiktok-card:hover { border-color: #2a2a38; }
+    .tiktok-card:hover { 
+      border-color: var(--blue); 
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+    }
 
     .tiktok-placeholder-inner {
       width: 100%;
@@ -400,11 +408,12 @@
     }
 
     .tiktok-placeholder-inner span {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.72rem;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #1e1e2a;
+      color: var(--grey);
     }
 
     /* ============================================
@@ -426,10 +435,9 @@
     }
 
     .footer-logo-text {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 900;
+      font-family: 'Audiowide', cursive;
       font-size: 1.3rem;
-      color: var(--white);
+      color: var(--blue);
       letter-spacing: 0.12em;
       margin-bottom: 1.5rem;
       display: block;
@@ -445,9 +453,9 @@
     }
 
     .footer-links a {
-      font-family: 'Rajdhani', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 600;
-      font-size: 0.86rem;
+      font-size: 0.9rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--grey);
@@ -455,20 +463,21 @@
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--gold); }
+    .footer-links a:hover { color: var(--pink); }
 
     .footer-sep { color: #1e1e28; user-select: none; }
 
     .footer-copy {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.74rem;
+      font-family: 'Chakra Petch', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
       letter-spacing: 0.1em;
-      color: #282835;
+      color: #383845;
       text-transform: uppercase;
     }
 
     /* ============================================
-       SCAN LINE AMBIENCE
+       SCAN LINE AMBIENCE (Changed to Blue)
     ============================================ */
     body::after {
       content: '';
@@ -476,8 +485,8 @@
       top: -2px; left: 0;
       width: 100%;
       height: 1px;
-      background: rgba(245, 197, 24, 0.07);
-      animation: scan 12s linear infinite;
+      background: rgba(0, 212, 255, 0.15);
+      animation: scan 10s linear infinite;
       pointer-events: none;
       z-index: 9999;
     }
@@ -539,7 +548,7 @@
 
   <section id="hero">
     <img
-      src="btwlogo.jpg"
+      src="btwlogo.png"
       alt="Team btw! Esports"
       class="hero-logo-img"
       onerror="this.style.display='none';"
@@ -548,7 +557,7 @@
     <p class="hero-eyebrow">Fortnite Zero Build</p>
 
     <h1 class="hero-title">
-      Team <span class="gold">btw!</span>
+      Team <span class="accent">btw!</span>
     </h1>
 
     <p class="hero-subtitle">Zero Build. High Tier.</p>
@@ -644,7 +653,7 @@
 
   <footer>
     <img
-      src="btwlogo.jpg"
+      src="btwlogo.png"
       alt="Team btw!"
       class="footer-logo-img"
       onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
@@ -658,4 +667,13 @@
         Team Discord
       </a>
       <span class="footer-sep">·</span>
-      <a href="https://www.tiktok.com/@tiktokjdogg"
+      <a href="https://www.tiktok.com/@tiktokjdogg" target="_blank" rel="noopener noreferrer">
+        TikTok
+      </a>
+    </div>
+
+    <p class="footer-copy">Team btw! &copy; 2026</p>
+  </footer>
+
+</body>
+</html>
