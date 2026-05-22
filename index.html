@@ -13,8 +13,9 @@
   />
 
   <style>
+
     /* ============================================
-       RESET & BASE
+       RESET
     ============================================ */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -22,30 +23,28 @@
       padding: 0;
     }
 
+    /* ============================================
+       DESIGN TOKENS
+       Gold is now a cool, bright yellow-white gold.
+       Glow intensity is kept very low so it reads
+       as gold, not orange, on dark backgrounds.
+    ============================================ */
     :root {
-      --bg:          #060608;
-      --bg-card:     #0d0d12;
-      --bg-section:  #0a0a0e;
-
-      /* TRUE GOLD — pulled from pure yellow-gold spectrum, not orange */
-      --gold:        #FFD700;
-      --gold-dim:    #c9a800;
-      --gold-glow:   rgba(255, 215, 0, 0.4);
-      --gold-soft:   rgba(255, 215, 0, 0.12);
-
-      /* ELECTRIC BLUE */
-      --blue:        #00AAFF;
-      --blue-glow:   rgba(0, 170, 255, 0.35);
-
-      --white:       #FFFFFF;
-      --grey:        #B0B0B0;
-      --border-dim:  #18181f;
+      --bg:         #060608;
+      --bg-card:    #0c0c10;
+      --bg-alt:     #09090d;
+      --gold:       #F5C518;   /* IMDb-style cool gold — reads clearly as gold not orange */
+      --gold-hover: #ffe066;   /* lighter on hover */
+      --blue:       #00AAFF;
+      --white:      #FFFFFF;
+      --grey:       #A0A0A8;
+      --border:     #16161e;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--white);
       font-family: 'Rajdhani', sans-serif;
       font-size: 16px;
@@ -61,36 +60,35 @@
     .section-title {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
       color: var(--white);
       text-align: center;
-      margin-bottom: 3rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      text-shadow:
-        0 0 15px rgba(255, 215, 0, 0.3),
-        0 0 40px rgba(255, 215, 0, 0.1);
+      margin-bottom: 3rem;
     }
 
     .section-title::after {
       content: '';
       display: block;
-      width: 56px;
+      width: 54px;
       height: 2px;
       background: linear-gradient(90deg, var(--blue), var(--gold));
-      margin: 0.75rem auto 0;
+      margin: 0.7rem auto 0;
       border-radius: 2px;
     }
 
     /* ============================================
        BUTTONS
     ============================================ */
+
+    /* Primary gold outline button */
     .btn-primary {
       display: inline-block;
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
       color: var(--gold);
@@ -99,20 +97,16 @@
       border-radius: 3px;
       background: transparent;
       cursor: pointer;
-      transition: background 0.25s, color 0.25s, box-shadow 0.25s;
-      box-shadow:
-        0 0 14px rgba(255, 215, 0, 0.2),
-        inset 0 0 14px rgba(255, 215, 0, 0.04);
+      transition: background 0.22s, color 0.22s, border-color 0.22s;
     }
 
     .btn-primary:hover {
       background: var(--gold);
-      color: var(--bg);
-      box-shadow:
-        0 0 28px rgba(255, 215, 0, 0.55),
-        0 0 70px rgba(255, 215, 0, 0.2);
+      color: #000;
+      border-color: var(--gold);
     }
 
+    /* Secondary card button */
     .btn-secondary {
       display: inline-block;
       font-family: 'Rajdhani', sans-serif;
@@ -123,21 +117,20 @@
       text-decoration: none;
       color: var(--grey);
       padding: 0.45rem 1.2rem;
-      border: 1px solid #252530;
+      border: 1px solid #232330;
       border-radius: 3px;
       background: transparent;
       cursor: pointer;
-      transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
+      transition: color 0.2s, border-color 0.2s;
     }
 
     .btn-secondary:hover {
       color: var(--gold);
       border-color: var(--gold);
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.25);
     }
 
     /* ============================================
-       NAVIGATION
+       NAV
     ============================================ */
     nav {
       position: fixed;
@@ -148,36 +141,33 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.85rem 2.5rem;
-      background: rgba(6, 6, 8, 0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-dim);
+      background: rgba(6, 6, 8, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
       text-decoration: none;
     }
 
     /*
       NAV LOGO IMAGE
-      Save your btw! logo file as "btw-logo.png" in the same
-      folder as index.html — it loads automatically.
+      Place btw-logo.png in the same folder as index.html.
+      If it's missing the text fallback shows automatically.
     */
     .nav-logo-img {
       height: 36px;
       width: auto;
-      object-fit: contain;
     }
 
-    .nav-logo-fallback {
+    .nav-logo-text {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--gold);
       letter-spacing: 0.1em;
-      text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     }
 
     .nav-links {
@@ -211,9 +201,9 @@
       text-align: center;
       padding: 0 2rem;
       position: relative;
+      /* Very faint gold center glow — low opacity keeps it gold not orange */
       background:
-        radial-gradient(ellipse 60% 45% at 50% 52%, rgba(255,215,0,0.045) 0%, transparent 65%),
-        radial-gradient(ellipse 90% 70% at 50% 50%, rgba(0,170,255,0.025) 0%, transparent 80%),
+        radial-gradient(ellipse 55% 40% at 50% 52%, rgba(245, 197, 24, 0.04) 0%, transparent 70%),
         var(--bg);
     }
 
@@ -221,60 +211,53 @@
     #hero::before, #hero::after {
       content: '';
       position: absolute;
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       border-style: solid;
       border-color: var(--gold);
-      opacity: 0.18;
+      opacity: 0.15;
     }
     #hero::before { top: 10%; left: 5%; border-width: 2px 0 0 2px; }
     #hero::after  { bottom: 10%; right: 5%; border-width: 0 2px 2px 0; }
 
     /*
       HERO LOGO IMAGE
-      Save btw-logo.png in the same folder — shows above the title.
-      The onerror hides it cleanly if the file isn't there yet.
+      Save btw-logo.png in the same folder.
+      Hides itself if the file isn't there yet.
     */
     .hero-logo-img {
-      width: clamp(180px, 38vw, 440px);
+      width: clamp(160px, 36vw, 420px);
       height: auto;
-      object-fit: contain;
       margin-bottom: 1.5rem;
-      filter: drop-shadow(0 0 35px rgba(255,215,0,0.28));
     }
 
     .hero-eyebrow {
       font-family: 'Rajdhani', sans-serif;
       font-weight: 600;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       letter-spacing: 0.45em;
       text-transform: uppercase;
       color: var(--blue);
       margin-bottom: 0.9rem;
-      opacity: 0.9;
     }
 
     .hero-title {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: clamp(2.8rem, 9vw, 7rem);
+      font-size: clamp(2.6rem, 9vw, 6.5rem);
       line-height: 1;
       color: var(--white);
       letter-spacing: 0.04em;
-      text-shadow:
-        0 0 25px rgba(255,215,0,0.5),
-        0 0 70px rgba(255,215,0,0.18),
-        0 0 120px rgba(255,215,0,0.07);
       margin-bottom: 0.6rem;
     }
 
-    /* "btw!" accent word in gold */
-    .hero-title .exclaim { color: var(--gold); }
+    /* The "btw!" word rendered in solid gold — no glow bleeding */
+    .hero-title .gold { color: var(--gold); }
 
     .hero-subtitle {
       font-family: 'Rajdhani', sans-serif;
       font-weight: 500;
-      font-size: clamp(0.95rem, 2.5vw, 1.35rem);
+      font-size: clamp(0.9rem, 2.2vw, 1.3rem);
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--grey);
@@ -283,11 +266,9 @@
 
     /* ============================================
        ROSTER
-       Duplicate .player-card for each new member.
+       Duplicate .player-card to add new members.
     ============================================ */
-    #roster {
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-section) 100%);
-    }
+    #roster { background: var(--bg-alt); }
 
     .roster-grid {
       display: grid;
@@ -297,13 +278,13 @@
       margin: 0 auto;
     }
 
-    /* ── PLAYER CARD ────────────────────────────
-       Copy this entire block to add a new member.
-       Update: avatar letter or image, name, role, href links.
-    ──────────────────────────────────────────── */
+    /* ── PLAYER CARD ─────────────────────────────
+       Copy this whole block for each new player.
+       Update: avatar, name, role, TikTok href, Discord href.
+    ──────────────────────────────────────────────*/
     .player-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-dim);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 2rem 1.5rem 1.5rem;
       display: flex;
@@ -313,10 +294,10 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      transition: border-color 0.3s, transform 0.3s;
     }
 
-    /* Gold shimmer top bar — appears on hover */
+    /* Gold top bar on hover */
     .player-card::before {
       content: '';
       position: absolute;
@@ -329,54 +310,49 @@
 
     .player-card:hover {
       border-color: var(--gold);
-      box-shadow:
-        0 0 25px rgba(255,215,0,0.14),
-        0 0 60px rgba(255,215,0,0.05);
       transform: translateY(-5px);
     }
 
     .player-card:hover::before { opacity: 1; }
 
     /*
-      PLAYER AVATAR
-      Using the dog photo for JDogg:
-        1. Save the dog image as "jdogg-logo.jpg" in the same folder.
-        2. Swap the <div class="player-avatar"> below for:
-           <img src="jdogg-logo.jpg" alt="JDogg"
-                class="player-avatar player-avatar--img" />
+      AVATAR
+      To use the dog photo for JDogg:
+        1. Save image as jdogg-logo.jpg next to index.html
+        2. Replace the <div class="player-avatar">J</div>
+           with: <img src="jdogg-logo.jpg" alt="JDogg" class="player-avatar player-avatar--img" />
     */
     .player-avatar {
-      width: 90px;
-      height: 90px;
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #0d0d12 0%, #1a1a24 100%);
-      border: 2px solid #222230;
+      background: #111118;
+      border: 2px solid #202030;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: var(--gold);
       margin-bottom: 0.5rem;
       overflow: hidden;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s;
     }
 
-    /* Applied when using a real photo */
     .player-avatar--img {
       object-fit: cover;
+      font-size: 0;
     }
 
     .player-card:hover .player-avatar {
       border-color: var(--gold);
-      box-shadow: 0 0 16px rgba(255,215,0,0.3);
     }
 
     .player-name {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--white);
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -385,7 +361,7 @@
     .player-role {
       font-family: 'Rajdhani', sans-serif;
       font-weight: 700;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
@@ -393,9 +369,9 @@
     }
 
     .card-divider {
-      width: 36px;
+      width: 34px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #25253a, transparent);
+      background: #1e1e28;
       margin: 0.25rem 0 1rem;
     }
 
@@ -428,38 +404,36 @@
       width: 320px;
       height: 568px;
       background: var(--bg-card);
-      border: 1px solid var(--border-dim);
+      border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      position: relative;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: border-color 0.3s;
     }
 
-    .tiktok-card:hover {
-      border-color: rgba(255,215,0,0.2);
-      box-shadow: 0 0 25px rgba(255,215,0,0.07);
-    }
+    .tiktok-card:hover { border-color: #2a2a38; }
 
     .tiktok-placeholder-inner {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      color: #222230;
     }
 
     .tiktok-placeholder-inner svg {
-      width: 36px; height: 36px;
-      fill: #222230;
+      width: 34px;
+      height: 34px;
+      fill: #1e1e2a;
     }
 
     .tiktok-placeholder-inner span {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.74rem;
-      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: #1e1e2a;
     }
 
     /* ============================================
@@ -467,32 +441,28 @@
     ============================================ */
     footer {
       background: #040406;
-      border-top: 1px solid var(--border-dim);
+      border-top: 1px solid var(--border);
       padding: 3.5rem 2rem;
       text-align: center;
     }
 
     /*
-      FOOTER LOGO IMAGE
-      Same btw-logo.png file — smaller size.
+      FOOTER LOGO IMAGE — same btw-logo.png file.
     */
     .footer-logo-img {
-      height: 44px;
+      height: 42px;
       width: auto;
-      object-fit: contain;
       display: block;
       margin: 0 auto 1.5rem;
-      opacity: 0.85;
-      filter: drop-shadow(0 0 8px rgba(255,215,0,0.2));
+      opacity: 0.9;
     }
 
-    .footer-logo-fallback {
+    .footer-logo-text {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       color: var(--white);
       letter-spacing: 0.12em;
-      text-shadow: 0 0 10px rgba(255,215,0,0.25);
       margin-bottom: 1.5rem;
       display: block;
     }
@@ -509,7 +479,7 @@
     .footer-links a {
       font-family: 'Rajdhani', sans-serif;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--grey);
@@ -523,29 +493,29 @@
 
     .footer-copy {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       letter-spacing: 0.1em;
-      color: #2e2e3a;
+      color: #282835;
       text-transform: uppercase;
     }
 
     /* ============================================
-       SUBTLE SCAN LINE AMBIENCE
+       SCAN LINE AMBIENCE
     ============================================ */
     body::after {
       content: '';
       position: fixed;
       top: -2px; left: 0;
       width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.06), transparent);
-      animation: scan 10s linear infinite;
+      height: 1px;
+      background: rgba(245, 197, 24, 0.07);
+      animation: scan 12s linear infinite;
       pointer-events: none;
       z-index: 9999;
     }
 
     @keyframes scan {
-      0%   { top: -2px; }
+      0%   { top: -1px; }
       100% { top: 100vh; }
     }
 
@@ -555,69 +525,72 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
 
-      #hero::before, #hero::after {
-        width: 50px;
-        height: 50px;
-      }
-
       section { padding: 4rem 1.25rem; }
+
+      #hero::before, #hero::after {
+        width: 48px; height: 48px;
+      }
 
       .roster-grid {
         grid-template-columns: 1fr;
-        max-width: 300px;
+        max-width: 290px;
       }
 
       .tiktok-card {
         width: 100%;
         max-width: 320px;
-        height: 520px;
+        height: 510px;
       }
     }
 
     @media (max-width: 480px) {
-      .hero-title    { font-size: 2.6rem; }
-      .hero-subtitle { font-size: 0.88rem; letter-spacing: 0.15em; }
-      .hero-logo-img { width: 82vw; }
+      .hero-title    { font-size: 2.4rem; }
+      .hero-subtitle { font-size: 0.86rem; letter-spacing: 0.14em; }
+      .hero-logo-img { width: 80vw; }
     }
+
   </style>
 </head>
-
 <body>
 
-  <!-- ============================================
-       NAVIGATION
-  ============================================ -->
+  <!-- =============================================
+       NAV
+  ============================================== -->
   <nav>
     <a href="#hero" class="nav-logo">
       <!--
-        Drop btw-logo.png in the same folder.
-        If the file isn't found, the text fallback shows instead.
+        BTW LOGO: save btw-logo.png next to index.html.
+        Text fallback shows if file is missing.
       -->
       <img
         src="btw-logo.png"
         alt="Team btw!"
         class="nav-logo-img"
-        onerror="this.style.display='none'; document.getElementById('nav-fallback').style.display='block';"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
       />
-      <span id="nav-fallback" class="nav-logo-fallback" style="display:none;">btw!</span>
+      <span class="nav-logo-text" style="display:none;">btw!</span>
     </a>
 
     <ul class="nav-links">
       <li><a href="#roster">Roster</a></li>
       <li><a href="#feed">Feed</a></li>
-      <li><a href="[discord.gg](https://discord.gg/GZcAkqgQvA)" target="_blank" rel="noopener">Discord</a></li>
+      <li>
+        <a href="[discord.gg](https://discord.gg/GZcAkqgQvA)" target="_blank" rel="noopener noreferrer">
+          Discord
+        </a>
+      </li>
     </ul>
   </nav>
 
 
-  <!-- ============================================
+  <!-- =============================================
        HERO
-  ============================================ -->
+  ============================================== -->
   <section id="hero">
 
     <!--
-      Drop btw-logo.png in the same folder as index.html.
-      Hidden automatically if file is missing.
+      BTW LOGO in hero — save btw-logo.png next to index.html.
+      Hides if file not found.
     -->
     <img
       src="btw-logo.png"
@@ -627,13 +600,17 @@
     />
 
     <p class="hero-eyebrow">Fortnite Zero Build</p>
-    <h1 class="hero-title">Team <span class="exclaim">btw!</span></h1>
+
+    <h1 class="hero-title">
+      Team <span class="gold">btw!</span>
+    </h1>
+
     <p class="hero-subtitle">Zero Build. High Tier.</p>
 
     <a
       href="[discord.gg](https://discord.gg/GZcAkqgQvA)"
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       class="btn-primary"
     >
       Join the Discord
@@ -642,29 +619,28 @@
   </section>
 
 
-  <!-- ============================================
+  <!-- =============================================
        ROSTER
-       To add a member: copy the player-card block below,
-       update the avatar, name, role, and both href values.
-  ============================================ -->
+       ADD A NEW MEMBER: copy the player-card block,
+       update avatar letter (or swap to img), name,
+       role, and both button href values.
+  ============================================== -->
   <section id="roster">
     <h2 class="section-title">Active Roster</h2>
 
     <div class="roster-grid">
 
-      <!-- ── PLAYER CARD: JDogg ─────────────────
-           TO USE THE DOG PHOTO:
-           1. Save the dog image as "jdogg-logo.jpg"
-              in the same folder as index.html.
-           2. Delete the <div class="player-avatar">J</div> line.
-           3. Uncomment the <img> line below it.
-      ──────────────────────────────────────────-->
+      <!-- ── PLAYER CARD: JDogg ──────────────────
+           DOG PHOTO INSTRUCTIONS:
+           1. Save dog photo as jdogg-logo.jpg in same folder.
+           2. Delete: <div class="player-avatar">J</div>
+           3. Paste:  <img src="jdogg-logo.jpg" alt="JDogg"
+                           class="player-avatar player-avatar--img" />
+      ─────────────────────────────────────────── -->
       <div class="player-card">
 
         <div class="player-avatar">J</div>
-        <!-- Uncomment this line and delete the div above once you have the image file:
-        <img src="jdogg-logo.jpg" alt="JDogg" class="player-avatar player-avatar--img" />
-        -->
+        <!-- SWAP ABOVE FOR DOG PHOTO — see instructions in comment above -->
 
         <h3 class="player-name">JDogg</h3>
         <p class="player-role">Founder</p>
@@ -675,19 +651,15 @@
           <a
             href="[tiktok.com](https://www.tiktok.com/@tiktokjdogg)"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="btn-secondary"
-          >
-            TikTok
-          </a>
+          >TikTok</a>
           <a
             href="[discord.gg](https://discord.gg/3fBhDtWkCx)"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             class="btn-secondary"
-          >
-            Discord
-          </a>
+          >Discord</a>
         </div>
 
       </div>
@@ -697,11 +669,14 @@
   </section>
 
 
-  <!-- ============================================
+  <!-- =============================================
        FEED — Recent Drops
-       When ready: delete .tiktok-placeholder-inner and
-       paste a TikTok blockquote embed inside .tiktok-card.
-  ============================================ -->
+       ADDING A REAL TIKTOK EMBED:
+       1. Go to TikTok, open the video, click Share > Embed.
+       2. Copy the <blockquote> + <script> snippet.
+       3. Delete the .tiktok-placeholder-inner div.
+       4. Paste the TikTok snippet inside .tiktok-card.
+  ============================================== -->
   <section id="feed">
     <h2 class="section-title">Recent Drops</h2>
 
@@ -710,7 +685,12 @@
       <div class="tiktok-card">
         <div class="tiktok-placeholder-inner">
           <svg viewBox="0 0 24 24" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89
+              0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1
+              2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05
+              6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34
+              6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75
+              a4.85 4.85 0 0 1-1.01-.06z"/>
           </svg>
           <span>Drop coming soon</span>
         </div>
@@ -719,7 +699,12 @@
       <div class="tiktok-card">
         <div class="tiktok-placeholder-inner">
           <svg viewBox="0 0 24 24" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89
+              0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1
+              2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05
+              6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34
+              6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75
+              a4.85 4.85 0 0 1-1.01-.06z"/>
           </svg>
           <span>Drop coming soon</span>
         </div>
@@ -728,7 +713,12 @@
       <div class="tiktok-card">
         <div class="tiktok-placeholder-inner">
           <svg viewBox="0 0 24 24" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89
+              0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1
+              2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05
+              6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34
+              6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75
+              a4.85 4.85 0 0 1-1.01-.06z"/>
           </svg>
           <span>Drop coming soon</span>
         </div>
@@ -738,25 +728,29 @@
   </section>
 
 
-  <!-- ============================================
+  <!-- =============================================
        FOOTER
-  ============================================ -->
+  ============================================== -->
   <footer>
 
     <img
       src="btw-logo.png"
       alt="Team btw!"
       class="footer-logo-img"
-      onerror="this.style.display='none'; document.getElementById('footer-fallback').style.display='block';"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
     />
-    <span id="footer-fallback" class="footer-logo-fallback" style="display:none;">Team btw!</span>
+    <span class="footer-logo-text" style="display:none;">Team btw!</span>
 
     <div class="footer-links">
       <a href="mailto:contact@teambtw.gg">contact@teambtw.gg</a>
       <span class="footer-sep">·</span>
-      <a href="[discord.gg](https://discord.gg/GZcAkqgQvA)" target="_blank" rel="noopener">Team Discord</a>
+      <a href="[discord.gg](https://discord.gg/GZcAkqgQvA)" target="_blank" rel="noopener noreferrer">
+        Team Discord
+      </a>
       <span class="footer-sep">·</span>
-      <a href="[tiktok.com](https://www.tiktok.com/@tiktokjdogg)" target="_blank" rel="noopener">TikTok</a>
+      <a href="[tiktok.com](https://www.tiktok.com/@tiktokjdogg)" target="_blank" rel="noopener noreferrer">
+        TikTok
+      </a>
     </div>
 
     <p class="footer-copy">Team btw! &copy; 2026</p>
